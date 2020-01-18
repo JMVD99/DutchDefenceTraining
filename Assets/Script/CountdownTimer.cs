@@ -20,9 +20,11 @@ public class CountdownTimer : MonoBehaviour
 
     void Update()
     {
+        //dit laat de timer aftellen
         currentTime -= 1 * Time.deltaTime;
         CountDownText.text = currentTime.ToString("0");
 
+        //dit zorgt voor de overgaan naar de eindscenes als de timer op 0 komt
         if (currentTime <= 0 && ScoreScript.scoreValue < 150)
         {
             currentTime = 0;
@@ -36,6 +38,8 @@ public class CountdownTimer : MonoBehaviour
 
             //laad level met scene name
             SceneManager.LoadScene("SubmitScoreEnd");
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 }

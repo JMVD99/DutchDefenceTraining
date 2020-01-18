@@ -16,6 +16,7 @@ public class InsertScore : MonoBehaviour
         StartCoroutine(Score());
     }
 
+    //dit zorgt ervoor dat er waardes van unity naar de PHP server worden gestuurd
     IEnumerator Score()
     {
         WWWForm form = new WWWForm();
