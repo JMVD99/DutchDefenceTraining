@@ -9,8 +9,7 @@ public class CountdownTimer : MonoBehaviour
     public float currentTime = 0f;
     float startingTime = 120f;
 
-    public int index;
-    public string levelName;
+
 
     [SerializeField] Text CountDownText;
 
@@ -24,15 +23,19 @@ public class CountdownTimer : MonoBehaviour
         currentTime -= 1 * Time.deltaTime;
         CountDownText.text = currentTime.ToString("0");
 
-        if (currentTime <= 0)
+        if (currentTime <= 0 && ScoreScript.scoreValue < 150)
         {
             currentTime = 0;
 
-            //laad level met build uit de index 
-            SceneManager.LoadScene(index);
-            
             //laad level met scene name
-            SceneManager.LoadScene(levelName);
+            SceneManager.LoadScene("eindscerm");
+        }
+        else if (currentTime <= 0 && ScoreScript.scoreValue > 150)
+        {
+            currentTime = 0;
+
+            //laad level met scene name
+            SceneManager.LoadScene("SubmitScoreEnd");
         }
     }
 }
